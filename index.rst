@@ -1,9 +1,9 @@
-.. gpcrmd documentation master file, created by
+.. SARS-CoV-2 virome documentation master file, created by
    sphinx-quickstart on Mon Sep 16 17:15:04 2019.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to GPCRmd's documentation!
+SARS-CoV-2 virome documentation
 ==================================
 
 .. toctree::

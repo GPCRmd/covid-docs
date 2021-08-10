@@ -6,18 +6,16 @@ Workbench
     :depth: 2
 
 
-The GPCRmd Workbench includes a set of online tools for the interactive visualization (*Viewer*) and analysis (*Toolkit*) of individual simulations.
+The Workbench includes a set of online tools for the interactive visualization (*Viewer*) and analysis (*Toolkit*) of individual simulations.
 
 
 ------
 Viewer
 ------
 
-General features
+Mouse controls
 ================
 
-Mouse controls:
----------------
 
 * **Left button hold and move**: rotate camera around center.
 
@@ -25,21 +23,17 @@ Mouse controls:
 * **Middle button click**: center camera on atom.
 * **Right button hold and move**: translate camera in screen plane.
 * **Left button click**: pick atom or distance.
-    * *On click show distance* mode:
 
         * When an atom is clicked, a label with information about it appears. Click at the background to deselect it, the label will disappear. To maintain a label, double-click on an atom. Double-click again on the atom to remove the label.
 
         * To draw a distance line between two atoms just single-click one atom after the other. Distances can be removed by double-clicking on one of the atoms at the edges.
 
-        * It is also possible to remove all the atom labels and distances at once, with the **Clear dists. button**.
+        * It is also possible to remove all the atom labels and distances at once, with the **Clear labels/dists. button**.
 
-    * *On click show variants* mode:
-        Click on the blue dots to obtain information on known natural variants of a residue. Data obtained from the `gnomAD database`_.
 
-    * *On click show mutations* mode:
-        Click on the blue dots to obtain information on mutational experiments done on a residue. Data obtained from GPCRdb_.
-
-If you wish to use more complex visualization options, you can open the structure and trajectories in MDsrv_ just by clicking at the gear button.
+Simulation report and files
+================
+By clicking on *Simulation report and files*, you will access the details of the system setup and simulation protocol, as well as links to download the simulation data.
 
 
 

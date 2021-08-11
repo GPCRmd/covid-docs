@@ -6,21 +6,30 @@ Workbench
     :depth: 2
 
 
-The Workbench includes a set of online tools for the interactive visualization (*Viewer*) and analysis (*Toolkit*) of individual simulations.
+The Workbench includes a set of online tools for the interactive visualization (*Viewer*) and analysis (*Toolkit*) of individual simulations. It also links the time-resolved protein dynamics with information on existing SARS-CoV-2 variants, their phylogeny, and the corresponding individual isolates. This allows evaluating the structural impact of variants taking into account protein dynamics.
+
+
+------------------------------
+Simulation report and files
+------------------------------
+By clicking on *Simulation report and files*, you will access the details of the system setup and simulation protocol, as well as links to download the simulation data.
 
 
 ------
 Viewer
 ------
 
+The viewer section of the Workbench page builds on the web-based structure viewer NGL_ 2.00 and MDsrv_ 0.3.5.
+
+
 Mouse controls
 ================
 
 
-* **Left button hold and move**: rotate camera around center.
+* **Left button hold and move**: rotate camera around the center.
 
 * **Middle button hold and move**: zoom camera in and out.
-* **Middle button click**: center camera on atom.
+* **Middle button click**: center camera on an atom.
 * **Right button hold and move**: translate camera in screen plane.
 * **Left button click**: pick atom or distance.
 
@@ -31,11 +40,6 @@ Mouse controls
         * It is also possible to remove all the atom labels and distances at once, with the **Clear labels/dists. button**.
 
 
-Simulation report and files
-================
-By clicking on *Simulation report and files*, you will access the details of the system setup and simulation protocol, as well as links to download the simulation data.
-
-
 
 Selection tools
 ===============
@@ -43,70 +47,46 @@ Selection tools
 Quick selection
 ---------------
 
-Quick-selection buttons allow to rapidly display the molecules present at the dynamics. Hover the buttons with your mouse to see the abbreviated name of these molecules, which can be used to create your own selections.
+Quick-selection buttons allow to rapidly display or hide the molecules present at the dynamics. Hover the buttons with your mouse to see the abbreviated name of these molecules, if any, which can be used to create your own selections.
 
-In the case of Structure selections, It is also possible to select the residues or molecules that are found **within a certain distance of a ligand**. It is only necessary to:
 
-1. Indicate what you want to visualize (residues or molecules found at the simulation).
-2. Input the wanted threshold distance (in angstroms).
-3. Indicate the molecule type around which the selection is made. Apart from predefined molecules, it is also possible to show the residues/molecules that are close to a personalized selection which, again, can include generic GPCR residue numbering.
+Relevant domains
+----------------
 
-If the selection is correct, a green checkmark will appear on the left. More than one distance selection can be displayed at the same time. Selections made with this tool will appear in coral red. The distance selection will be updated for each trajectory frame, as the disposition of the atoms may change.
+This section includes a list of relevant domains and annotations present in the protein, extracted from Uniprot_. Select or un-select a domain to represent it on the structure. More information on each domain can be found by clicking on the info button:
+
+
+* **Seq. position:** Position of the domain in the Uniprot sequence.
+* **Seq. (WT):** Wild type sequence of the domain.
+* **Selection:** Selection of the domain based on the `NGL selection language`_.
+* **Source:** Source Uniprot entry.
+
 
 Custom selection
 ----------------
 
-Use the text input field to specify your personalized representations. You can choose a representation type (licorice, cartoon, etc.) and a coloring scheme (color by element, by chain, etc.).
-
-Selections must be expressed using the `NGL selection language`_. Moreover, to indicate protein residues it is also possible to use **generic GPCR residue numbering**: Ballesteros-Weinstein (ex. 1.50), GPCRdb structure-based numbering (ex. 1x50) or a combination of both (ex. 1.50x50).
-
-For example, if you input ``40-70:P or CLZ``, residues numbered from 40 to 70 at the PDB belonging to chain P and Clozapine will be displayed. Another example, this time using a combination of different generic GPCR numbering styles, could be ``1.50 - 2x48 or 3.35x35 or SOD``.
-
-If your selection includes water and/or membrane molecules that you wish to display, check 'Include membrane and water'. This may slow down the playback speed of the simulation.
-
-Sequence selection
-------------------
-
-The GPCR Workbench also provides the option to select a protein segment from its sequence. Set your selection by clicking at the desired range or ranges of residues. Selected segments will appear at the sequence in green. To deselect a residue range from the sequence, just click on it. Finally, click at **Confirm selection**: the residue range(s) will be added to a text input field, which you can further modify to adjust the selection. If you want to add new sequence selections, click at the plus button.
-
-GPCR conserved positions
-------------------------
-
-This section provides the possibility to rapidly select positions or domains conserved in the different GPCR family classes. The GPCR class of the protein being represented will be selected by default, and therefore the conserved positions/domains corresponding to that GPCR class will be available to visualize.
-
-It is also possible to visualize the positions that correspond to conserved positions from other GPCR classes. For example, if your protein belongs to class A, you can represent the residue that corresponds to class B *2.50 (2.50b)*. Hover the buttons with your mouse for more information about the conserved positions and motifs, if available.
-
-.. _MDsrv: http://arose.github.io/mdsrv/
-.. _gnomAD database: https://gnomad.broadinstitute.org/
-.. _GPCRdb: https://www.gpcrdb.org/
-.. _NGL selection language: http://proteinformatics.charite.de/ngl/doc/index.html#User_manual/Usage/Selection_language
+Use the text input field to specify your personalized representations. You can choose a representation type (licorice, cartoon, etc.) and a coloring scheme (color by element, by chain, etc.). Selections must be expressed using the `NGL selection language`_. 
 
 
-Experimental density maps
----------------------------
-Display X-ray or electron microscopy density maps by defining any selection within this section. By default, this will also modify the representation of the molecules of the system. To change this behavior, un-select the option "Apply default representations" within *Selection settings*.
 
 -------
 Toolkit
 -------
 
-Interaction network (Flare plots)
-=================================
+General
+======================
 
-Flare Plots are a tool for the study and representation of intra-protein interactions developed at Stanford University by Dr. Fonseca and Dr. Venkatakishnan. This approach makes it possible to obtain a highly visual depiction of complex data, such as the set of interactions formed between protein residues throughout MD simulations, in the form of circular interactive networks named Flare plots. Residue-residue interactions are represented as lines connecting residue pairs. Hover or click a residue to highlight the lines representing the interactions in which it participates.
+Interaction network
+---------------------
+Interaction network, based on `Flare Plots`_, provides an interactive circular representation of contact networks. Noncovalent residue-residue interactions formed in the simulation are represented as lines connecting residue pairs. Hover or click a residue to highlight the lines representing the interactions in which it participates.
 
 There are several options available
 
 * **Interaction type:** Select the type of interaction to display on the plot.
-    * **Hydrogen bonds**:
-        * | **Wernet Nilsson criteria (MDTraj):** Any combination of donor atoms (NH or OH) and acceptor atoms (N or O) that holds the condition:
-          | \|AD| < 3.3 Å − 0.00044 * ∠HDA * ∠HDA
-          | Where \|AD| is the distance in Angstroms between donor and acceptor heavy atoms, and ∠HDA is the angle formed by the hydrogen atom, donor, and acceptor atoms in degrees. Defined by the MDTraj module function wernet_nilson_.
-        * | **GetContacts criteria:**
-          | \|AD| < 3.5Å
-          | ∠AHD < 70°
-          | Where A (acceptor) and D (donor) are any atom except hydrogen, carbon or sulphur.
-          | Based on GetContacts_. 
+    * | **Hydrogen bonds:**
+      | \|AD| < 3.5Å
+      | ∠AHD < 70°
+      | Where A (acceptor) and D (donor) are any atom except hydrogen, carbon or sulphur.
     * | **Salt bridges:**
       | \|AC\| < 4.0Å
       | Where:
@@ -149,72 +129,126 @@ There are several options available
       | Based on GetContacts_. 
 
 * **Display**:
-    * **Interacting pairs**: Show only a subset of interactions (intra- or inter-helix) or all of them.
+    * **Interacting pairs**: Allows to filter out interactions formed by residues that are 5 or less residues apart. 
     * **Simulation**: It is possible to summarize the interactions formed through all the trajectory frames. The frequency of each interaction is represented by the thickness of the lines connecting residues.
 * **Show in structure**: Click to display structural representations of the residues selected (clicked) at the flare plot. Unclick to hyde them. If there are no residues selected at the flare plot, nothing will happen.
 * **Clear plot**: Click to delete all selections made on the plot.
 * **Download data**: Click to download the plot data.
 
-Interaction frequencies
-==========================
-
-Hydrogen bonds
---------------
-
-This tool identifies Hydrogen Bonds formed in a simulation, splitting the results between protein-protein hydrogen bonds and protein-not protein bonds. We use the MDTraj module function wernet_nilson_, which establishes a threshold distance of 3.3 Angstroms between the donor and acceptor atoms; this threshold becomes progressively stricter as the angle formed by H-D-A increases (a perfect straight bond is 0 degrees, as the donor atom is central). It's possible to choose between a few options:
-
-1. **Do not include hydrogen bonds between neighbors**: If selected, excludes hydrogen bonds among residues which are less than 5 residues apart. These are usually the hydrogen bonds stabilizing alpha helices.
-2. **All hydrogen bonds**: If selected, includes hydrogen bonds formed between backbone (BB) atoms or side chains (SC) atoms, in any combination (SC-SC, BB-BB, SC-BB).
-3. **Only side-chain hydrogen bonds**: If selected, only includes hydrogen bonds formed between side-chain atoms.
-
-Finally, you can set a frequency threshold so only those hydrogen bonds which hold the cited condition in a proportion of the frames greater than the value you have set will appear in the results. You can also define an interval of frames into which perform the analysis. 
-
-Results have a "Show Hbond" button next to them which displays the bond in the viewer. At the end of the results table, you can find a "Show All" button, which displays all the bonds in that table at once.
-
-Ligand receptor contacts 
-----------------------------
-
-This analysis tool calculates the frequency of interaction between the protein residues and a given ligand across a trajectory. When the distance between any of their atoms and the ligand is smaller than the threshold, it is considered to be an interaction. It is possible to chose which residue atoms will be considered (heavy atoms only or all atoms). The result is presented as a table and a plot, which can be downloaded as an image. The residues that are found to interact can be displayed at the viewer screen (shown in purple), which can be deactivated using the "Display interacting residues" checkbox. It is also possible to download the interaction data obtained.
-
-Salt bridges
---------------
-
-This tool allows you to identify the salt bridges formed through a simulation. Salt bridges are defined as any combination between these two sets: {Arg-NH1, Arg-NH2, Lys-NZ, His-NE2, His-ND1} and {Glu-OE1, Glu-OE2, Asp-OD1, Asp-OD2} in which the participating atoms are closer than 4 Angstroms. Histidine atoms are only considered if the residue is protonated. As with hydrogen bond analysis, you can select a percentage threshold, and the results include a "Show Salt Bridge" button and a "Show All" button. Furthermore, you can select an interval of frames, instead of the whole trajectory.
-
-Distance 
-=========
-
-This tool is used to calculate the distance between atom pairs across the different frames of a trajectory, and therefore across time. To calculate a distance, you need to indicate the pair or pairs of atoms you are interested in. This can be done in different ways:
-
-* Select a pair of atoms at the viewer screen by clicking on them and, afterward, **importing the created distances** with the blue arrow button.
-* Indicate the desired atom pairs manually, by selecting "Compute distance between" **atoms** and inputting a pair of atom indices at the text input fields.
-* Indicate the desired atom pairs manually, by selecting "Compute distance between" **residues** and indicating the residue, chain and atom name you are interested in. The residue number and chain name must be indicated according to the NGL selection language (ex. 50:P), and the atom name selected from the droplist.
-
-It is also necessary to select the trajectory that will be used for the calculation. 
-Finally, just click at **Compute**. Only atom pairs that are marked with a green checkmark will be considered, since the absence of a checkmark indicates an error in the input (only numbers are allowed). The result will appear as a plot of distance by time or by frame, which can be downloaded as an image. It is also possible to download the data obtained as a CSV file. Moreover, the distances calculated can be displayed at the viewer screen, in the colors indicated at the plot legend. Such distance representations can be deactivated by deselecting the "Display distance" checkbox.
-
-RMSD 
-=====
-
-This tool computes the RMSD of all the conformations in a target trajectory to a reference conformation. It is necessary to indicate the trajectory to be used and the frames to be considered. Also, a reference frame of a given trajectory. It is possible to chose which atoms are going to be considered in the calculation: only alpha carbons, non-hydrogen protein atoms, protein C-alpha, etc. As in the case of distance analysis, the result will be shown in a plot (RMSD by time or by frame). It is possible to download the plot as an image or all the obtained data as a CSV file.
-
-Water volume distribution
-==========================
-Displays an averaged water density map of the MD trajectory under study. Maps are precomputed `VMD VolMap Tool`_. They are generated only for oxygen atoms of a water molecule in a cutoff distance of 10 Å to the protein using a resolution of 1 Å. Atoms are treated as spheres using the atomic radii. 
-
-Tunnels and channels
-=====================
-Displays the tunnels and channels formed in the receptor during the simulation. Tunnels are defined as void pathways leading from a cavity buried in a protein core to the surrounding solvent, while in channels both endings are opened to the surrounding solvent.
-
-Tunnels/channels are precalculated using the software `Caver 3.0`_. The starting point coordinates for apo forms and receptor-ligand structures are set to the center of mass of ligand-interacting residues in the respective PDB structure. The following input parameters are used: probe_radius=1.4, shell_radius=3, shell_depth=4. Note that we focus our analysis on the ligand-binding pocket, so tunnels/channels unrelated to the ligand-binding pocket may not be detected.
-
-All the tunnels/channels identified in the simulation are clustered by similarity. Such clusters of identified tunnels can be displayed by selecting them in the "Clusters" column. 
-
-It is also possible to display the tunnel with the highest throughput of each cluster. `As defined by Caver`_, the throughput of a tunnel or channel corresponds to the importance of the pathway, which is the probability that the pathway is used as a route for transportation. Tunnel throughput is calculated based on the radius and length of the tunnel. The frame at which the highest-throughput tunnel of each cluster is found can be displayed by clicking at the "Display frame *x*" button.
+Root mean square deviation (RMSD) 
+-------------------------------------
+This tool computes the RMSD of all the conformations in a target trajectory to a reference conformation using the _rmsd module of MDtraj. If more than one trajectory is available, the user can select the trajectory to be used. Also, it is possible to specify the frames to be considered. The first frame of the trajectory is used as a reference structure by default, but this can be specified by the user. It is also possible to choose which atoms are going to be considered in the calculation: only alpha carbons, non-hydrogen protein atoms, protein C-alpha, etc. Results are shown in a plot (RMSD by time or by frame). It is possible to download the plot as an image or all the obtained data as a CSV file.
 
 
-.. _wernet_nilson: http://mdtraj.org/1.8.0/api/generated/mdtraj.wernet_nilsson.html
+Root mean square fluctuation (RMSF)
+-------------------------------------
+The RMSF is computed for all the alpha carbons of the protein using the rmsf_ module of MDtraj. It is calculated based on the average structure of the simulation, obtained by averaging the coordinates of each atom during the trajectory. The trajectory is aligned to the obtained average structure before the RMSD is calculated.
+
+
+Variant impact
+================
+This tool interactively references the MD simulations with information on existing SARS-CoV-2 variants obtained from GISAID_. Each of the variants is annotated with static (mutation-dependent) and time-dependent (computed on the basis of the simulation dynamics) descriptors of their impact on multiple aspects of the protein’s structure, dynamics, and function. By assigning user- or pre-defined weights to these descriptors, the descriptors are combined in an impact score. 
+
+Sequence selector
+-------------------
+This tool displays the wild-type sequence of the protein or proteins present in the simulation, extracted from Uniprot (residue name and sequence position). Place your mouse on a residue to see the structure residue ID corresponding to that position. Have in mind that the residue ID may not correspond to the Uniprot sequence position. 
+
+Positions that have a known variant are colored in the sequence. It is possible to filter the variants that are displayed on the sequence to show only those present in a particular isolate of interest. This can be done with the **"Isolate"** dropdown.
+
+Click on a position with known variants to highlight it n the structure. Please note that the model may incorporate some mutations with respect to the wild-type sequence, so the residue name of the sequence (wild type) can, in some cases, not correspond to the residue name in the structure. 
+
+When a position with known variants is clicked, a pop-up with the list of variants appears. Click on one of the variants to obtain more information about its descriptors and impact score. 
+
+The **"Display in viewer"** checkbox control whether or not the variant information is displayed at the Viewer. If it is unselected, clicked positions will not be highlighted on the structure, and it will not be possible to color the structure based on the impact score.
+
+
+Descriptors of variant impact
+--------------------------------
+Our descriptors include:
+
+* **Mutation effect descriptors**, representing the impact of the amino acid change. Unless indicated otherwise, they were obtained from Biopython_ 1.76.
+        * BLOSUM90 score
+        * Charge difference, based on the charge of the wild type and mutated amino acid
+        * `Epstein's coefficient of difference`_ 
+        * `Experimental exchangeability`_
+        * `Grantham's distance`_ 
+        * `Miyata's distance`_ 
+        * `Sneath's index`_ 
+        * Several scales of change in hydrophobicity: `Kyte-Doolittle`_, `Eisenberg-Weiss`_ , Engelman_, Hessa_, Hopp-Woods_, Janin_, Moon-Fleming_, Wimley-White_, Zhao-London_
+        * Variant effect predictions extracted from the database `Mutfunc SARS-CoV-2`_, including conservation, structural consequences and `experimental antibody escape data`_.
+        
+* **Time-dependent predictors**, consisting of parameters extracted from the wild type simulation for the residue affected by the variant. They allow us to evaluate the structural impact of each variant. These predictors were obtained from the trajectory strided so that the delta is 0.1 ns or, in longer simulations, 1ns. 
+    * RMSD of the residue with relation to the first trajectory frame, obtained using the rmsd_ module of MDtraj.
+    * RMSF of the residue atoms, obtained with the rmsf_ module of MDtraj. 
+    * Solvent-accessible surface (SASA) of the residue, based on the Shrake and Rupley algorithm, calculated with the shrake_rupley_ algorithm of MDtraj. 
+    * Chi1 angle of the residue, which corresponds to the first side chain torsion angle formed between the 4 atoms over the CA-CB axis, if available. The Chi1 angle is calculated using the compute_chi1_ module of MDtraj.
+    * Number of contacts that the residue makes with other protein residues, obtained with GetContacts_. This includes hydrogen bonds, salt bridges, hydrophobic contacts, pi-cation contacts, pi-stacking contacts, t-stacking contacts, Van der Waals, water bridges, extended water bridges and total contacts.
+
+  Click on the **+** sign beside each time-dependent predictor to see the value of the predictor by simulation time. By clicking on the plot, the user can set the Viewer to the corresponding trajectory frame.
+
+.. _`Epstein's coefficient of difference`: https://doi.org/10.1038/215355a0
+.. _`Experimental exchangeability`: doi.org/10.1534/genetics.104.039107
+.. _`Grantham's distance`: https://doi.org/10.1126/science.185.4154.862
+.. _`Miyata's distance`: https://doi.org/10.1007/BF01732340
+.. _`Sneath's index`: https://doi.org/10.1016/0022-5193(66)90112-3
+.. _`Kyte-Doolittle`: https://doi.org/10.1016/0022-2836(82)90515-0
+.. _`Eisenberg-Weiss`: https://doi.org/10.1016/0022-2836(84)90309-7
+.. _Engelman: doi.org/10.1146/annurev.bb.15.060186.001541 
+.. _Hessa: https://doi.org/10.1038/nature06387
+.. _Hopp-Woods: https://doi.org/10.1073/pnas.78.6.3824
+.. _Janin: https://doi.org/10.1038/277491a0
+.. _Moon-Fleming: https://doi.org/10.1073/pnas.1103979108
+.. _Wimley-White: https://doi.org/10.1038/nsb1096-842
+.. _Zhao-London: https://doi.org/10.1110/ps.062286306
+.. _`Mutfunc SARS-CoV-2`: http://sars.mutfunc.com/home
+.. _`experimental antibody escape data`: https://doi.org/10.1016/j.chom.2020.11.007
+.. _shrake_rupley: https://mdtraj.org/1.9.4/api/generated/mdtraj.shrake_rupley.html
+.. _compute_chi1: https://mdtraj.org/1.9.4/api/generated/mdtraj.compute_chi1.html
+
+Impact score
+-------------------
+The descriptors are combined in an impact score, defined as the sum of each weighted descriptor. Users may assign predefined or custom weight combinations to the descriptors to reflect various aspects of the structural impact of the variant. 
+
+Predefined weights can be enabled with buttons in the *Impact score* section that load the corresponding sets of coefficients in the “weight” sliders inside the *Mutation effect* and *Time-dependent* boxes. They include:
+
+* **Model-based weights:** obtained based on regularized regression models (LASSO) trained on 23 per-variant covariates, used as predictors, computed on the basis of the 12 MD trajectories containing the Spike receptor-binding domain (RBD) available at the time of writing. Each of these models was trained to fit the corresponding experimental quantity, measured for each variant in deep scanning mutagenesis experiments. Model-based weights are only available for simulations including the RBD.
+    * **Fitted to antibody escape:** trained to estimate, for each variant, its impact in terms of the potential for `antibody evasion`_.
+    * **Fitted to binding:** trained to estimate, for each variant, its impact in terms of the change in `binding affinity`_ between the RBD and the ACE2 receptor.
+    * **Fitted to expression:** trained to estimate, for each variant, its impact in terms of the change in expression_ of the RBD on yeast cells.
+* **Other weights:**
+    * **RMSF and contacts:**  weights set to consider, equally, RMSF and all contact types.
+
+
+.. _`binding affinity`: https://doi.org/10.1016/j.cell.2020.08.012
+.. _expression: https://doi.org/10.1016/j.cell.2020.08.012
+.. _`antibody evasion`: https://doi.org/10.1016/j.chom.2020.11.007
+
+
+To set a customized set of weights, the user can manually set the “weight” sliders inside the *Mutation effect* and *Time-dependent* boxes.
+
+
+If a variant is selected in the *Sequence selector*, the obtained score is presented together with a *q value*, showing its rank in the distribution of all variants (q=0, 0.5, and 1 respectively mean that the selected amino acid variant achieves the minimum, median and maximum effect score with respect to the other ones observed in the available sequences). Also, the distribution of all variants is shown as a histogram, on which the impact score of the selected variant is highlighted. A significant shift of the variant score to the right or left from the distribution peak reflects a variant with a high propensity to disturb protein function based on the selected descriptors.  
+
+
+Finally, a color scale is generated based on the impact score of the variants in the protein sequence. Both the *Sequence selector* and the protein structure in the Viewer can be automatically colored based on this scale. In residues with more than one variant, the color corresponds to the average score of all the residue variants. 
+
+
+
+
+
+
+
+
+.. _Uniprot: https://covid-19.uniprot.org
 .. _GetContacts: https://getcontacts.github.io/interactions.html
-.. _VMD VolMap Tool: https://www.ks.uiuc.edu/Research/vmd/vmd-1.9.1/ug/node153.html
-.. _Caver 3.0: https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002708
-.. _As defined by Caver: https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002708
+.. _NGL: http://nglviewer.org/ngl/api/index.html
+.. _MDsrv: http://nglviewer.org/mdsrv/
+.. _gnomAD database: https://gnomad.broadinstitute.org/
+.. _GPCRdb: https://www.gpcrdb.org/
+.. _NGL selection language: http://nglviewer.org/ngl/api/manual/usage/selection-language.html
+.. _wernet_nilson: http://mdtraj.org/1.8.0/api/generated/mdtraj.wernet_nilsson.html
+.. _`Flare Plots`: https://doi.org/10.1101/840694 
+.. _rmsd: https://mdtraj.org/1.9.4/api/generated/mdtraj.rmsd.html
+.. _rmsf: https://mdtraj.org/1.9.4/api/generated/mdtraj.rmsf.html
+.. _GISAID: https://www.gisaid.org/
+.. _Biopython: https://biopython.org/

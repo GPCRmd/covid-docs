@@ -10,8 +10,9 @@ SCoV2-MD documentation
    :maxdepth: 2
    :caption: Contents:
 
-   source/workbench
    source/simulation-browser
+   source/workbench
+   source/virus-evolution
    source/data-download
    source/submission
 

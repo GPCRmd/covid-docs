@@ -7,7 +7,7 @@ SCoV2-MD documentation
 ==================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
    source/simulation-browser

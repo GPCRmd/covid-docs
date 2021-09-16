@@ -186,6 +186,10 @@ Our descriptors include:
 
   Click on the **+** sign beside each time-dependent predictor to see the value of the predictor by simulation time. By clicking on the plot, the user can set the Viewer to the corresponding trajectory frame.
 
+* | **User-provided descriptors**, which can be provided by the user as a CSV-formatted file, based on the template provided at the top of the section (example here_). Upload the CSV, with comma separated values, using the "Browse" and "Upload" buttons to generate the corresponding sliders.
+  | Of note, custom descriptors enable the inclusion of arbitrary external data, as well as non-linearities and interactions, in the prediction models. 
+
+
 .. _`Epstein's coefficient of difference`: https://doi.org/10.1038/215355a0
 .. _`Experimental exchangeability`: doi.org/10.1534/genetics.104.039107
 .. _`Grantham's distance`: https://doi.org/10.1126/science.185.4154.862
@@ -204,6 +208,7 @@ Our descriptors include:
 .. _`experimental antibody escape data`: https://doi.org/10.1016/j.chom.2020.11.007
 .. _shrake_rupley: https://mdtraj.org/1.9.4/api/generated/mdtraj.shrake_rupley.html
 .. _compute_chi1: https://mdtraj.org/1.9.4/api/generated/mdtraj.compute_chi1.html
+.. _here: https://submission.gpcrmd.org/covid19/dwl/cdescr_template/28
 
 Impact score
 -------------------

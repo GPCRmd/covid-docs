@@ -15,5 +15,6 @@ SCoV2-MD documentation
    source/virus-evolution
    source/data-download
    source/submission
+   source/citing-us
 
 
